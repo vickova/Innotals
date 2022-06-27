@@ -1,0 +1,29 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# production
+/build
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# API key = cabe13f462c2ab3075bed9c977e9fd00
+
+# https://api.themoviedb.org/3/movie/550?api_key=cabe13f462c2ab3075bed9c977e9fd00
+
+# eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjYWJlMTNmNDYyYzJhYjMwNzViZWQ5Yzk3N2U5ZmQwMCIsInN1YiI6IjYyOWI1YTBkN2UxMmYwNzIxZGUxMWI5YSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.pjwtkEVEI5djT8Js1NWpxl5B-p806Ov6an4MbRKTBiY
