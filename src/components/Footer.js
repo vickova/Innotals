@@ -63,7 +63,7 @@ const FooterStyle = styled.div`
     h2, h3{
         font-family: 'Inter', sans-serif;
     }
-    @media (max-width: 400px){
+    @media (max-width: 768px){
         display: block;
         padding: 2rem;
     }
@@ -103,6 +103,11 @@ const FooterInner = styled.div`
         img{
             margin: 1rem 1rem 1rem 0;
         }
+    }
+    @media (max-width: 768px){
+        display: block;
+        gap:0;
+        padding: 2rem;
     }
 `;
 export default Footer

@@ -23,10 +23,10 @@ const About = () => {
                 <div className='texts'>
                     <div>
                         <div>
-                            <h2>Victor Olatunde</h2>
+                            <h2 className='white-text'>Victor Olatunde</h2>
                             <h3>Founder/CEO</h3>
                         </div>
-                        <div><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero eligendi unde fugiat et. Veniam ratione accusamus totam eum debitis!</p></div>
+                        <div><p className='white-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque vero eligendi unde fugiat et. Veniam ratione accusamus totam eum debitis!</p></div>
                     </div>
                 </div>
             </div>
@@ -60,7 +60,10 @@ const AboutStyle = styled.div`
         font-size: 2rem;
         font-family: 'Inter', sans-serif;
     }
-    @media (max-width: 400px){
+    .white-text{
+        color:#FBFBFB;
+    }
+    @media (max-width: 768px){
         margin: auto 20px;
     }
 `;

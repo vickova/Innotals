@@ -85,7 +85,7 @@ const SubscriptionStyle = styled.div`
             }
         }
     }
-    @media (max-width: 400px){
+    @media (max-width: 1040px){
         padding: 2rem 1.5rem;
         .sub{
             form{

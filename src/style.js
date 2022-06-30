@@ -36,7 +36,7 @@ export const OverviewStyle = styled.div`
             width: 50%;
         }
     }
-    
+
     @media (max-width: 1040px){
         .overview-text{
             display:block;
