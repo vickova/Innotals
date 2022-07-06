@@ -56,6 +56,7 @@ const FooterStyle = styled.div`
     padding: 3rem;
     display:flex;
     gap: 10rem;
+    width: 100%;
     p{
         font-size: 1.2rem;
         font-family: 'Ubuntu', sans-serif;

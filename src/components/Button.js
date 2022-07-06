@@ -14,6 +14,6 @@ const ButtonStyle = styled.button`
     border-radius: 10px;
     border:none;
     margin: 1rem 0;
-`
+`;
 
 export default Button;
