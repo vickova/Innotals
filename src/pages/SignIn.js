@@ -1,13 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Logo from '../assets/images/Logo.png';
 import Fine from '../assets/images/fine.png';
 import Google from '../assets/images/google.png';
 import Github from '../assets/images/git.png';
 import Question from '../assets/images/Q.png';
+import { FaEye } from 'react-icons/fa';
+import { FaEyeSlash } from 'react-icons/fa';
 
 
 const SignIn = () => {
+    const [closePassword, setClosePassword] = useState(false);
   return (
     <SignInStyle>
         <div>
@@ -21,14 +24,19 @@ const SignIn = () => {
                         <div className='form-cover'>
                             <form action="">
                             <button><span><img src={Google} alt="google-logo" /></span> <p>Login With Google</p></button>
-                            <button><span><img src={Github} alt="google-logo" /></span> <p>Login With Github</p></button>
+                            <button style={{backgroundColor:'#1f6bef', fontWeight:'400'}}><span><img src={Github} alt="google-logo" /></span> <p>Login With Github</p></button>
                             <div className='input-cover'>
                                 <label htmlFor="email">Email Address</label>
                                 <input type="text" name='email' id='email' placeholder='example247@gmail.com'/>
                             </div>
-                            <div className='input-cover'>
+                            <div className='input-cover' id='password-cover'>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" name='password' id='password' placeholder='.....'/>
+                                <input type={closePassword?'text': 'password'} name='password' id='password' placeholder='.......'/>
+                                <div className='eye' onClick={()=> setClosePassword(!closePassword)}>
+                                { closePassword? (
+                                <FaEye style={{width:'30px', height:'30px'}}/>):(
+                                <FaEyeSlash style={{width:'30px', height:'30px'}}/>)
+                                    }</div>
                             </div>
                             <div className='check-input-cover'>
                                 <div className='check-input'>
@@ -66,7 +74,7 @@ height: 100%;
     margin:0;
     padding: 1rem;
     margin-bottom: 1rem;
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid #d8d6d6;
 }
 .sign-flex{
     display:flex;
@@ -78,8 +86,9 @@ height: 100%;
     }
 }
 h2{
+    color: #504e4e;
     margin: 2rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: 'Inter', sans-serif;
 }
 p, label, span{
@@ -88,10 +97,11 @@ p, label, span{
 .question-sect{
     display: flex;
     justify-content: flex-end;
+    padding: 3rem;
     img{
         margin:0 .5rem;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 }
 
@@ -128,7 +138,24 @@ const FormStyleLeft = styled.div`
             background-color: #FFF;
         }
     }
+    #password-cover{
+        input::placeholder{
+            font-size: 4rem;
+        }
+        .eye{
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            right: 30px;
+            top: 45px;
+            cursor:pointer;
+            display:flex;
+            justify-content:center;
+
+        }
+    }
     button{
+        font-weight: 600;
         padding: 1.2rem 2rem;
         border-radius: 50px;
         margin: 1rem 0;
@@ -173,6 +200,7 @@ const FormStyleLeft = styled.div`
     #email:focus, #password:focus{
         outline: 2px solid #0950CD;
     }
+
     .check-input-cover{
         display: flex;
         justify-content: space-between;
@@ -185,7 +213,8 @@ const FormStyleLeft = styled.div`
         }
     }
     span{
-        color: red;
+        color: orange;
+        cursor:'pointer';
     }
     p{
         text-align:center;

@@ -1,6 +1,6 @@
 import React from 'react';
 import OverviewSection from '../components/overview-section';
-import Victor from '../assets/images/Rectangle 201.png';
+import Victor from '../assets/images/victor.png';
 import Lady from '../assets/images/Rectangle 156.jpg'
 import Questions from '../components/Questions';
 import Subscription from '../components/Subscription';

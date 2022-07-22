@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import Logo from '../assets/images/Logo.png';
 import Fine from '../assets/images/fine.png';
 import Google from '../assets/images/google.png';
 import Github from '../assets/images/git.png';
 import Question from '../assets/images/Q.png';
+import { FaEye } from 'react-icons/fa';
+import { FaEyeSlash } from 'react-icons/fa';
+
+
 
 
 
 const SignUp = () => {
+    const [closePassword, setClosePassword] = useState(false);
+
   return (
     <SignInStyle>
         <div>
@@ -27,18 +33,16 @@ const SignUp = () => {
                             </div>
                             <div className='input-cover'>
                                 <label htmlFor="email">Email Address</label>
-                                <input type="text" name='email' id='email' placeholder='example247@gmail.com'/>
+                                <input type="text" name='email' id='signUpemail' placeholder='example247@gmail.com'/>
                             </div>
-                            <div className='input-cover'>
+                            <div className='input-cover' id='password-cover'>
                                 <label htmlFor="password">Password</label>
-                                <input type="password" name='password' id='password' placeholder='.....'/>
-                            </div>
-                            <div className='check-input-cover'>
-                                <div className='check-input'>
-                                    <input type="checkbox" name='checkbox'/>
-                                    <label htmlFor="checkbox">Remember me</label>
-                                </div>
-                                <span>Forgot password?</span>
+                                <input type={closePassword?'text': 'password'} name='password' id='password' placeholder='.......'/>
+                                <div style={{cursor:'pointer'}} className='eye' onClick={()=> setClosePassword(!closePassword)}>
+                                { closePassword? (
+                                <FaEye style={{width:'30px', height:'30px'}}/>):(
+                                <FaEyeSlash style={{width: '30px', height:'30px'}}/>)
+                                    }</div>
                             </div>
                             <ButtonStyle><p>Sign Up</p></ButtonStyle>
                             <p>Want to become a member? <span>Join now</span></p>
@@ -47,10 +51,11 @@ const SignUp = () => {
                     </FormStyleLeft>
                     <SignInLeft>
                         <div className='signIn-cards'>
-                        <div>
-                            <ButtonStyle style={{backgroundColor: '#FFF', color: '#0950CD'}}><span><img src={Google} alt="google-logo" /></span> <p>Login With Google</p></ButtonStyle>
-                            <ButtonStyle><span><img src={Github} alt="google-logo" /></span> <p>Login With Github</p></ButtonStyle>
-                        </div>
+                            <img src={Fine} alt="singUp" />
+                            <div>
+                                <ButtonStyle style={{backgroundColor: '#FFF', color: '#1f6bef', fontWeight:'600'}}><span style={{border: '3px solid #0950CD'}}><img src={Google} alt="google-logo" /></span> <p>Login With Google</p></ButtonStyle>
+                                <ButtonStyle style={{backgroundColor:'#1f6bef'}}><span><img src={Github} alt="google-logo" /></span> <p>Login With Github</p></ButtonStyle>
+                            </div>
                         </div>
                     </SignInLeft>
                 </div>
@@ -68,7 +73,7 @@ height: 100%;
 .logo-container{
     margin:0;
     padding: 1rem;
-    border-bottom: 1px solid lightblue;
+    border-bottom: 1px solid #d8d6d6;
 }
 .sign-flex{
     display:flex;
@@ -80,8 +85,10 @@ height: 100%;
     }
 }
 h2{
-    margin: 2rem;
-    font-size: 2rem;
+    color: #504e4e;
+    margin: 2rem 2rem 0 3rem;
+    font-size: 2.5rem;
+    font-family: 'Inter', sans-serif;
 }
 p, label, span{
     font-family: 'Ubuntu', sans-serif;
@@ -89,13 +96,13 @@ p, label, span{
 .question-sect{
     display: flex;
     justify-content: flex-end;
+    padding: 3rem;
     img{
         margin:0 .5rem;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
     }
 }
-
 @media screen and (max-width: 1040px){
     .sign-flex{
         display: flex;
@@ -110,6 +117,7 @@ const FormStyleLeft = styled.div`
     width: 35%;
     display: flex;
     justify-content: center;
+    align-items: center;
     .form-cover{
         width: 100%;
     }
@@ -124,8 +132,23 @@ const FormStyleLeft = styled.div`
             background-color: #FFF;
         }
     }
-    
-    #email, #password, #fullname{
+    #password-cover{
+        input::placeholder{
+            font-size: 4rem;
+        }
+        .eye{
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            right: 30px;
+            top: 45px;
+            cursor: pointer;
+            display:flex;
+            justify-content:center;
+
+        }
+    }
+    #signUpemail, #password, #fullname{
         border-radius: 50px;
         height: 55px;
         margin: 2rem 0;
@@ -134,22 +157,12 @@ const FormStyleLeft = styled.div`
         border: 1px solid #0950CD;
         padding:0 1.5rem;
     }
-    #email:focus, #password:focus, #fullname:focus{
+    #signUpemail:focus, #password:focus, #fullname:focus{
         outline: 2px solid #0950CD;
     }
-    .check-input-cover{
-        display: flex;
-        justify-content: space-between;
-        .check-input{
-            display:flex;
-            input{
-                width: 20px;
-                height: 20px;
-            }
-        }
-    }
     span{
-        color: red;
+        color: orange;
+        cursor:'pointer';
     }
     p{
         text-align:center;
@@ -161,10 +174,11 @@ const FormStyleLeft = styled.div`
         width: 100%;
     }
     @media screen and (max-width: 680px){
+        margin-top: 150px;
         p, label, span{
             font-size: 1rem;
         }
-        #email, #password, #fullname{
+        #signUpemail, #password, #fullname{
             padding: 0 1rem;
             font-size: .8rem;
         }
@@ -223,21 +237,25 @@ const ButtonStyle = styled.button`
 const SignInLeft = styled.div`
     color: #fff;
     width: 40%;
-    height: 600px;
+    height: fit-content;
     border-radius: 25px 40px 25px 40px;
     box-sizing: border-box;
     margin: 2rem 0;
+    position: relative;
     .signIn-cards{
-        width: 100%;
-        height: 100%;
-        background-image: url(${Fine});
-        background-size: cover;
-        background-repeat: no-repeat;
-        display: flex;
-        align-items: center;
         justify-content: center;
         gap:0;
+        align-items:center;
+        height: fit-content;
+        img{
+            width: 100%;
+            height: 100%;
+        }
         div{
+            margin: 3rem 0;
+            position: absolute;
+            top: 250px;
+            left: 50px;
             width: 80%;
         }
         
@@ -254,6 +272,17 @@ const SignInLeft = styled.div`
     }
     @media screen and (max-width: 680px){
         height: 400px;
+        .signIn-cards{
+            div{
+                position: static;
+                top:0;
+                left: 0;
+                width: 100%;
+                button{
+                    box-shadow: 2px 2px 3px 3px #e5e2e2;
+                }
+            }
+        }
     }
     @media screen and (max-width: 360px){
         height: 300px;
