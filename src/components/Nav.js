@@ -8,9 +8,12 @@ import Fred from '../assets/images/fred.png';
 import Menu from '../assets/icons/menu.svg';
 import Exit from '../assets/icons/close.svg';
 import VArrow from '../assets/icons/v-arrow.svg';
+import {Link, useLocation, useParams} from 'react-router-dom';
+
 
 
 const Nav = () => {
+    const {pathname} = useLocation();
     const [toggle, setToggle] = useState(false);
   return (
     <NavStyle Fred={Fred}>
@@ -27,7 +30,13 @@ const Nav = () => {
                     <img className='navbar-icons' src={Box} alt="box" />
                     <img className='navbar-icons' src={Notify} alt="notification" />
                     <div className="mentors-n">
-                        <img src={Fred} alt="fred" />
+                        {(pathname === '/talenthome/'|| pathname==='/talenthome/mentor'||pathname==='/talenthome/courses'
+                        ||pathname==='/talenthome/resume'||pathname==='/talenthome/interview'||pathname==='/talenthome/community'
+                        ||pathname==='/talenthome/settings')?
+                        <img src={Fred} alt="fred" />:(pathname === '/recruiter/'|| pathname==='/recruiter/interview'||pathname==='/recruiter/settings'
+                        ||pathname==='/recruiter/settings/password')?
+                        <div style={{borderRadius:'50%', background:'#FF6600', height:'45px',width:'45px'}}></div>:<div style={{borderRadius:'50%', background:'#E40F0F', height:'45px',width:'45px'}}></div>
+                        }
                         <img src={VArrow} alt="v-arrow" />
                     </div>
                 </div>
